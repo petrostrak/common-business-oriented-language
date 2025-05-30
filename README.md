@@ -1,2 +1,2 @@
-# common-business-oriented-languate
-A repo deticated for learing COBOL
+## Common Business-oriented Language
+A repo deticated for learing COBOL.
