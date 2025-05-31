@@ -192,3 +192,30 @@ PROCEDURE DIVISION.
 DisplayPrompt.
      DISPLAY "I did it".
 ```
+
+## COBOL Coding Rules
+Traditionally, COBOL programs were written on coding sheets, punched on to punch cards, and then loaded into the computer via a card reader. 
+
+*   On the coding sheet, the first six character positions are reserved for sequence numbers.
+*   The seventh character position is reserved for the continuation character or for an asterisk that denotes a comment line. 
+*   The actual program text starts in column 8. The four positions from 8 to 11 are known as Area
+A, and the positions from 12 to 72 are called Area B.
+*   The area from position 73 to 80 is the identification area; it was generally used to identify the program. 
+
+> [!IMPORTANT]  
+> All division names, section names, paragraph names, file description entries and 01 level numbers `must` startin Area A. All other sentences must startin Area B.
+
+### Name Construction
+All user-defined names in COBOL must adhere to the following rules:
+*   They must contain at least 1 character and not more than 30 characters.
+*   They must contain at least one alphabetic character and must not begin or end with a hyphen.
+*   They must be constructed from the characters A to Z, the numbers 0 to 9, and the hyphen. Because the hyphen can be mistaken for the minus sign, a word cannot begin or end with a hyphen.
+*   Names are not case-sensitive. SalesDate is the same as salesDate or SALESDATE.
+*   None of the many COBOL reserved words may be used as a user-defined name. 
+
+```
+TotalPay
+Gross-Pay
+PrintReportHeadings
+Customer10-Rec
+```
