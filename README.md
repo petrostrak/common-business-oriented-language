@@ -1,4 +1,4 @@
-# Common Business-oriented Language
+# Common Business Oriented Language
 A repo deticated for learing COBOL.
 
 ## Structure of COBOL Programs
@@ -81,3 +81,13 @@ DISPLAY "Name entered was " StudentName
 |            | SORT          |                |                 |               |                |
 |            | RETURN        |                |                 |               |                |
 |            | RELEASE       |                |                 |               |                |
+
+## The 4 Divisions
+At the top of the COBOL hierarchy are the four divisions. These divide the program into distinct structural elements. Although some of the divisions may be omitted, the sequence in which they are specified is fixed and must be as follows. Just like section names and paragraph names, division names must be followed by a period.
+
+```
+IDENTIFICATION DIVISION.    // Contains information about the program
+ENVIRONMENT DIVISION.       // Contains environment information
+DATA DIVISION.              // Contains data descriptions
+PROCEDURE DIVISION.         // Contains the program algorithms
+```
