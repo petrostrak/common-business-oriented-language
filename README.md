@@ -219,3 +219,9 @@ Gross-Pay
 PrintReportHeadings
 Customer10-Rec
 ```
+
+## Compile and run .cob files
+```
+cobc -x example-program.cob
+./example-program
+```
