@@ -91,3 +91,104 @@ ENVIRONMENT DIVISION.       // Contains environment information
 DATA DIVISION.              // Contains data descriptions
 PROCEDURE DIVISION.         // Contains the program algorithms
 ```
+
+### IDENTIFICATION DIVISION
+The purpose of the IDENTIFICATION DIVISION is to provide information about the program to you, the compiler, and the linker. The `PROGRAM-ID` paragraph is the only entry required. Other paragraphs may be `AUTHOR` and `DATE-WRITTEN`.
+
+```
+PROGRAM-ID. UserAssignedProgramName.
+```
+
+When a number of independently compiled programs are combined by the linker into a single executable run- unit, each program is identified by the name given in its PROGRAM-ID. When control is passed to a particular program by means of a CALL verb, the target of the CALL invocation is the name given in the subprogram’s PROGRAM-ID
+
+```
+CALL "PrintSummaryReport".
+```
+```
+IDENTIFICATION DIVISION. 
+PROGRAM-ID. PrintSummaryReport. 
+AUTHOR. Petros Trakadas. 
+DATE-WRITTEN. 31st May 2025.
+```
+
+### ENVIRONMENT DIVISION
+The ENVIRONMENT DIVISION is used to describe the environment in which the program works. The idea is
+to make it easy to change the program when it has to run on a different computer or one with different peripheral devices or when the program is being used in a different country.
+
+The ENVIRONMENT DIVISION consists of two sections
+* CONFIGURATION SECTION
+
+    The SPECIAL-NAMES paragraph allows you to specify such environmental details as what alphabet to use, what currency symbol to use and what decimal point symbol to use.
+* INPUT-OUTPUT SECTION
+
+    The FILE-CONTROL paragraph lets you connect internal file names with external devices and files.
+
+```
+IDENTIFICATION DIVISION.
+PROGRAM-ID. ConfigurationSectionExamples.
+AUTHOR. Petros Trakadas. 
+DATE-WRITTEN. 31st May 2025.
+ENVIRONMENT DIVISION.
+CONFIGURATION SECTION.
+SPECIAL-NAMES.
+    DECIMAL-POINT IS COMMA.
+    SYMBOLIC CHARACTERS ESC CR LF // Lets you assign a name to one of the unprintable characters.
+                    ARE 28 14 11.
+INPUT-OUTPUT SECTION.
+FILE-CONTROL.
+    SELECT StockFile ASSIGN TO "D:\DataFiles\Stock.dat"
+           ORGANIZATION IS SEQUENTIAL.
+```
+
+### DATA DIVISION
+The DATA DIVISION is used to describe most of the data that a program processes. The DATA DIVISION is divided into four sections:
+
+*   The `FILE SECTION` describes the data that is sent to, or comes from, the computer’s data storage peripherals. These include such devices as card readers, magnetic tape drives, hard disks, CDs, and DVDs.
+*   The `WORKING-STORAGE SECTION` describes the general variables used in the program.
+*   The `LINKAGE SECTION` is used only in subprograms.
+*   The `REPORT SECTION` is used only when generating reports.
+
+```
+IDENTIFICATION DIVISION.
+PROGRAM-ID.  SimpleDataDeclarations.
+AUTHOR.  Petros Trakadas.
+DATE-WRITTEN. 31st May 2025.
+DATA DIVISION.
+WORKING-STORAGE SECTION.
+01  CardinalNumber      PIC 99      VALUE ZEROS.
+01  IntegerNumer        PIC S99     VALUE -14.
+01  DecimalNumber       PIC 999V99  VALUE 543.21.
+01  ShopName            PIC X(30)   VALUE SPACES.
+01  ReportHeading       PIC X(25)   VALUE "=== Employment Report ==="
+```
+
+## Data Hierarchy
+Even though data hierarchy is too complicated topic to deal with so soon, a preview of it is given in BirthDate below:
+```
+01  BirthDate.
+    02  YearOfBirth.
+        03 CenturyOB    PIC 99
+        03 YearOB       PIC 99
+    02  MonthOfBirth    PIC 99
+    02  DayOfBirth      PIC 99
+```
+```
+|                 BirthDate                     |
+|      YearOfBirth    |             |           |
+| CenturyOB |  YearOB |MonthOfBirth |DayOfBirth |
+| 1   | 9   | 8  | 6  |   1  |   0  |  0  |  5  |
+```
+
+### PROCEDURE DIVISION
+The PROCEDURE DIVISION is where all the data described in the DATA DIVISION is processed and produced. It is here that you describe your algorithm. The PROCEDURE DIVISION is hierarchical in structure. It consists of sections, paragraphs, sentences, and statements. Tshere must be at least one paragraph, one sentence, and one statement in the PROCEDURE DIVISION.
+
+Whereas the paragraph and section names in the other divisions are defined by the language, in the PROCEDURE DIVISION they are chosen by you. The names chosen should reflect the function of the code contained in the paragraph or section.
+
+#### Shortest COBOL Program
+```
+IDENTIFICATION DIVISION.
+PROGRAM-ID. ShortestProgram.
+PROCEDURE DIVISION.
+DisplayPrompt.
+     DISPLAY "I did it".
+```
