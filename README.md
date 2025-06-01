@@ -321,8 +321,8 @@ An elementary item is the equivalent of a variable in other languages. It is an 
 
 The declaration may also take a number of optional clauses. The most common optional clause is the VALUE clause, which assigns an initial, or starting, value to a data item. Elementary data items that are not a subdivision of a group item must use a level number of 01 or 77.
 
-[!NOTE]
->A data item declaration may also take a number of other optional clauses such as USAGE, BLANK WHEN ZERO, and JUSTIFIED.
+> [!NOTE]
+> A data item declaration may also take a number of other optional clauses such as USAGE, BLANK WHEN ZERO, and JUSTIFIED.
 
 ## Declaring Elementary Data Items
 COBOL is not a typed language, so it employs a very different mechanism for describing its data items. COBOL uses what could be described as a “declaration by example” strategy. In effect, you provide the system with an example, or template, or picture of the size and type (alphabetic, numeric, alphanumeric) of the item. From this PICTURE clause, the compiler derives the information necessary to allocate the item.
@@ -346,7 +346,7 @@ To create the required picture, you use a set of symbols. The most common symbol
 |S|Indicates the presence of a sign, and can only appear at the beginning of a picture:|
 ||01 IntegerValue         PIC S9(4) VALUE -1234.|
 
-[!NOTE]
+> [!NOTE]
 > There are many more picture symbols than those listed above. Most of the remaining symbols will be introduced in [edited pictures](#edited-pictures).
 
 ### PICTURE Clause Notes
@@ -359,8 +359,8 @@ PICTURE 9(18) is equivalent to PIC 999999999999999999.
 ```
 Numeric values can have a maximum of 18 digits, whereas the limit on string values (PIC X) is usually system dependent.
 
-[!NOTE]
->In the 2002 standard, the maximum number of digits in a numeric literal or PICTURE clause was increased from 18 digits to 31 digits.
+> [!NOTE]
+> In the 2002 standard, the maximum number of digits in a numeric literal or PICTURE clause was increased from 18 digits to 31 digits.
 
 #### Example Declarations
 ```
@@ -386,11 +386,11 @@ In COBOL there are only 3 basic data types:
 ### The MOVE Verb
 Assignment in COBOL is achieved using the `MOVE` verb.
 
-[!WARNING]
->The COMPUTE verb, which assigns the result of an arithmetic expression to a data item, should never be used to assign the value of one item to another.
+> [!WARNING]
+> The COMPUTE verb, which assigns the result of an arithmetic expression to a data item, should never be used to assign the value of one item to another.
 
-[!WARNING]
->The SET verb, which can be used to set a condition name to TRUE or to change the value in a table index, should only be used for these specialized purposes.
+> [!WARNING]
+> The SET verb, which can be used to set a condition name to TRUE or to change the value in a table index, should only be used for these specialized purposes.
 
 ### MOVE Syntax
 The MOVE metalanguage makes the verb seem simple but its operation is complicated by a set of governing rules. The metalanguage for MOVE is as follows:
