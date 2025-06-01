@@ -411,3 +411,8 @@ completely replaced. The contents of the source item are undisturbed.
 *   When the decimal point is not explicitly specified in either the source or destination item(s), the item is treated as if it had an assumed decimal point immediately after its rightmost character.
 
 ![move-rules](https://github.com/petrostrak/common-business-oriented-language/blob/main/move-rules.png)
+
+*Valid and invalid MOVE combinations*
+
+### Alphanumeric MOVEs
+Remember the following rule for alphanumeric MOVEs: when the destination item is alphanumeric or alphabetic (PIC X or A), data is copied into the destination area from left to right with space-filling or truncation on the right.
