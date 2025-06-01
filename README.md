@@ -376,3 +376,36 @@ WORKING-STORAGE SECTION.
 01 TaxRate PIC V99 VALUE .35.
 01 CustomerName PIC X(15) VALUE "Mike".
 ```
+
+## Assignment in COBOL
+In COBOL there are only 3 basic data types:
+*   Alphabetic (PIC A)
+*   Alphanumeric (PIC X)
+*   Numeric (PIC 9)
+
+### The MOVE Verb
+Assignment in COBOL is achieved using the `MOVE` verb.
+
+[!WARNING]
+>The COMPUTE verb, which assigns the result of an arithmetic expression to a data item, should never be used to assign the value of one item to another.
+
+[!WARNING]
+>The SET verb, which can be used to set a condition name to TRUE or to change the value in a table index, should only be used for these specialized purposes.
+
+### MOVE Syntax
+The MOVE metalanguage makes the verb seem simple but its operation is complicated by a set of governing rules. The metalanguage for MOVE is as follows:
+
+`MOVE Source$#il TO Destination$#i...`
+
+MOVE copies data from the source identifier (or literal) to one or more destination identifiers. The source and destination identifiers can be group or elementary data items.
+
+### MOVE Rules
+The major rules for the MOVE verb are given here.
+*   The source and destination identifiers can be either elementary or group data items.
+*   When data is copied into a destination item, the contents of the destination item are
+completely replaced. The contents of the source item are undisturbed.
+*   If the number of characters in the source item is too few to fill the destination item, the rest of the destination item is filled with zeros or spaces.
+*   If the number of characters in the source item is too many to fit in the destination item, the characters that cannot fit are lost. This is known as truncation.
+*   When the destination item is alphanumeric or alphabetic (PIC X or A), data is copied into the destination area from left to right, with space-filling or truncation on the right.
+*   When the destination item is numeric or edited numeric, data is aligned along the decimal point with zero-filling or truncation as necessary.
+*   When the decimal point is not explicitly specified in either the source or destination item(s), the item is treated as if it had an assumed decimal point immediately after its rightmost character.
