@@ -258,3 +258,57 @@ CalculateResult.
 
 > [!CAUTION]
 > Numeric data items must be given an explicit numeric starting value by means of the VALUE clause, using the INITIALIZE verb, or by assignment. if a numeric data item with an undefined value is used in a calculation, the pro- gram may crash. Of course, a data item with an undefined value may receive the result of a calculation because in that case any non-numeric data is overwritten with the calculation result.
+
+## Data Declaration
+COBOL programs use 3 categories of data:
+*   Literals
+*   Figurative constants
+*   Data items (variables)
+
+Unlike other programming languages, COBOL does not support user-defined constants.
+
+### Literals
+A literal is a data item that consists only of the data item value itself. It cannot be referred to by a name. By definition, literals are constants in that they cannot be assigned a different value.
+There are two types of literal:
+*   Alphanumeric (text/string) literals 
+
+"Petros Trakadas", "1528", "-1528", "1528.95"
+*   Numeric literals
+
+1528,   1528.95,  -1528,   +1528
+
+### Data Items
+A data item can be defined as a named location in memory in which a program can store a data value and from which it can be retrieve the stored value. A `data name`, or identifier, is the name used to identify the area of memory for the data item.
+In addition to the data name, a data item must also be described in terms of its basic type (alphabetic, alphanumeric, numeric) and its size. Every data item used in a COBOL program must have a description in the [DATA DIVISION](#data-division).
+
+## Data Type Enforcement
+In COBOL, there are only three types of data: numeric, alphanumeric (text/string), and alphabetic. The distinction between these data types is only weakly enforced by the compiler. In COBOL, it is possible to assign a non-numeric value to a data item that has been declared to be numeric. Therefore, it is the responsibility of the programmer to ensure that non-numeric data is never assigned to a numeric data item intended for use in a calculation. 
+> [!CAUTION]
+> Attempting to perform computations on numeric data items that contain non-numeric data is a frequent cause of program crashes for beginning CoBol programmers. this can easily happen if the data item has not been initialized to a valid starting value.
+
+### Figurative Constants
+Unlike most other programming languages, COBOL does not provide a mechanism for creating user-defined, named constants. This is a serious deficiency. Named constants make program more readable and more maintainbable. In COBOL, a data item can be assigned a value, but there is no way to ensure that, somewhere in the program, some maintenance programmer has not assigned a different value to the data item.
+> [!NOTE]
+> This deficiency has been addressed in ISO 2002 COBOL standard by means of the CONSTANT clause entry.
+>`01 SalesTaxRate CONSTANT AS .06.`
+
+Although COBOL does not allow user-defined named constants, it does have a set of special constants called `figurative constants`. Figurative constants are special constant values that may be used wherever it is legal to use a literal value. However, unlike a literal, when a figurative constant is assigned to a data item, it fills the entire item, overwriting everything in it. Figurative constants are often used to initialize data items. For instance, MOVE SPACES TO CustomerName fills the whole data item with spaces, and MOVE ZEROS TO FinalTotal fills that data item with zeros.
+
+|Figurative Constant|Behavior|
+|----------------|-----------------|
+|ZERO|Behaves like one or more instances of the literal value 0. The constants ZERO, ZEROS, and|
+|ZEROS|ZEROES are all synonyms. Whichever is used, the effect is exactly the same.|
+|ZEROES||
+|SPACE|Behaves like one or more instances of the space character. SPACE and SPACES are|
+|SPACES|synonyms|
+|HIGH-VALUE|Behaves like one or more instances of the character in the highest ordinal position in the|
+|HIGH-VALUES|current collating sequence (usually the ASCII character set).|
+||HIGH-VALUE and HIGH-VALUES are synonyms.|
+|LOW-VALUE|Behaves like one or more instances of the character in the lowest ordinal position in the|
+|LOW-VALUES|current collating sequence (the null character [hex 00] in the ASCII character set).|
+||LOW-VALUE and LOW-VALUES are synonyms.|
+|QUOTE|Behaves like one or more instances of the quote character. However, it cannot be used to|
+|QUOTES|bracket a non-numeric literal instead of the actual quote character. For instance, QUOTE|
+||Freddy QUOTE cannot be used in place of "Freddy".|
+||QUOTE and QUOTES are synonyms.|
+|ALL literal|Allows an ordinary literal character to behave as if it were a figurative constant.|
