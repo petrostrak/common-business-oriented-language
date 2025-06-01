@@ -312,3 +312,67 @@ Although COBOL does not allow user-defined named constants, it does have a set o
 ||Freddy QUOTE cannot be used in place of "Freddy".|
 ||QUOTE and QUOTES are synonyms.|
 |ALL literal|Allows an ordinary literal character to behave as if it were a figurative constant.|
+
+## Elementary Data Items
+An elementary item is the equivalent of a variable in other languages. It is an atomic data item that is not further subdivided. The type and size of an elementary data item are the type and size specified in its PICTURE clause. In COBOL, an elementary data item declaration consists of a line of code containing the following mandatory items:
+*   A level number
+*   A data-name or identifier
+*   A PICTURE clause
+
+The declaration may also take a number of optional clauses. The most common optional clause is the VALUE clause, which assigns an initial, or starting, value to a data item. Elementary data items that are not a subdivision of a group item must use a level number of 01 or 77.
+
+[!NOTE]
+>A data item declaration may also take a number of other optional clauses such as USAGE, BLANK WHEN ZERO, and JUSTIFIED.
+
+## Declaring Elementary Data Items
+COBOL is not a typed language, so it employs a very different mechanism for describing its data items. COBOL uses what could be described as a “declaration by example” strategy. In effect, you provide the system with an example, or template, or picture of the size and type (alphabetic, numeric, alphanumeric) of the item. From this PICTURE clause, the compiler derives the information necessary to allocate the item.
+
+## PICTURE Clause Symbols
+To create the required picture, you use a set of symbols. The most common symbols used in standard PICTURE clauses are shown below
+
+|Symbol|Meaning|
+|-|-|
+|A|Indicates an occurrence of any alphabetic character (a to z plus blank) at the corresponding position in|
+||the picture:|
+||01 ThreeLetterAcronym   PIC AAA VALUE "DNA".|
+|X|Indicates an occurrence of any character from the character set at the corresponding position in the|
+||picture:|
+||01 Salutation           PIC XXX VALUE "Mr.".|
+|9|Indicates the occurrence of a digit at the corresponding position in the picture:
+||01 CardinalValue        PIC 9(4) VALUE 1234.|
+|V|Indicates the position of the decimal point in a numeric value. It is often referred to as the `assumed`|
+||`decimal` point because it is not part of the value but is rather information about the value:|
+||01 TotalSales           PIC 9(5)V99 VALUE ZEROS.|
+|S|Indicates the presence of a sign, and can only appear at the beginning of a picture:|
+||01 IntegerValue         PIC S9(4) VALUE -1234.|
+
+[!NOTE]
+> There are many more picture symbols than those listed above. Most of the remaining symbols will be introduced in [edited pictures](#edited-pictures).
+
+### PICTURE Clause Notes
+```
+PIC 9(8) is equivalent to PICTURE 99999999.
+PIC 9(7)V99 is equivalent to PIC 9999999V99.
+PICTURE X(15) is equivalent to PIC XXXXXXXXXXXXXXX. 
+PIC S9(5)V9(4) is equivalent to PIC S99999V9999. 
+PICTURE 9(18) is equivalent to PIC 999999999999999999.
+```
+Numeric values can have a maximum of 18 digits, whereas the limit on string values (PIC X) is usually system dependent.
+
+[!NOTE]
+>In the 2002 standard, the maximum number of digits in a numeric literal or PICTURE clause was increased from 18 digits to 31 digits.
+
+#### Example Declarations
+```
+WORKING-STORAGE SECTION
+|Num1|Num2|TaxRate|CustomerName|
+|-|-|-|-|
+|000|015|35|Mike***********|
+
+DATA DIVISION.
+WORKING-STORAGE SECTION.
+01 Num1 PIC 999 VALUE ZEROS.
+01 Num2 PIC 999 VALUE 15.
+01 TaxRate PIC V99 VALUE .35.
+01 CustomerName PIC X(15) VALUE "Mike".
+```
