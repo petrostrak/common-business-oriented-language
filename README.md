@@ -409,3 +409,5 @@ completely replaced. The contents of the source item are undisturbed.
 *   When the destination item is alphanumeric or alphabetic (PIC X or A), data is copied into the destination area from left to right, with space-filling or truncation on the right.
 *   When the destination item is numeric or edited numeric, data is aligned along the decimal point with zero-filling or truncation as necessary.
 *   When the decimal point is not explicitly specified in either the source or destination item(s), the item is treated as if it had an assumed decimal point immediately after its rightmost character.
+
+[move-rules](https://srinimf.com/wp-content/uploads/2010/04/untitled.png)
