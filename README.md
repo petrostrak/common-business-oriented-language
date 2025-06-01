@@ -225,3 +225,36 @@ Customer10-Rec
 cobc -x example-program.cob
 ./example-program
 ```
+
+### Breaking down a COBOL program
+```
+IDENTIFICATION DIVISION. 
+PROGRAM-ID. DoCalc.
+AUTHOR. Petros Trakadas.
+DATE-WRITTEN. 31st May 2025.
+DATA DIVISION. 
+WORKING-STORAGE SECTION. 
+01 FirstNum     PIC 9       VALUE ZEROS.    // 0-9 initialized to zero
+01 SecondNum    PIC 9       VALUE ZEROS.    // 0-9 initialized to zero
+01 CalcResult   PIC 99      VALUE 0.        // 0-99 initialized to zero
+01 UserPrompt   PIC X(38)   VALUE           // alphanumeric of up to 38 chars initialized to the string below
+    "Please enter two single digit numbers".
+PROCEDURE DIVISION.
+CalculateResult.
+    DISPLAY UserPrompt
+    ACCEPT FirstNum 
+    ACCEPT SecondNum 
+    COMPUTE CalcResult = FirstNum + SecondNum
+    DISPLAY "Result is = " CalcResult 
+    STOP RUN.
+```
+
+> [!NOTE]  
+> In COBOL, every data-item declaration starts with a level number. Level numbers are used to represent [data hierarchy](#data-hierarchy). Because all the items in this example program are independent, elementary data items, they have a level number of 01. This in turn is followed by a storage declaration fo the data item. The storage declaration defines the type and size of the storage required. To do this, COBOL uses a kind of “declaration by example” strategy. An example, or picture (hence PIC), is given of the maximum value the data item can hold. The symbols used in the picture declaration indicate the basic type of the item (numeric = 9, alphanumeric = X, alphabetic = A), and the number of symbols used indicates the size.
+> `01 FirstNum PIC 9 VALUE ZEROS.` indicates that FirstNum can hold a cardinal number with value from 0 - 9. 
+> If that data item was required to hold an integer number, the picture would have to be defined as `PIC S9` (signed numeric).
+> This picture clause is followed by `VALUE` clause specifying that FirstNum starts with an initial value of zero. In COBOL, unless a variable is explicitly given an initial value, its value is undefined.
+
+
+> [!CAUTION]
+> Numeric data items must be given an explicit numeric starting value by means of the VALUE clause, using the INITIALIZE verb, or by assignment. if a numeric data item with an undefined value is used in a calculation, the pro- gram may crash. Of course, a data item with an undefined value may receive the result of a calculation because in that case any non-numeric data is overwritten with the calculation result.
