@@ -416,3 +416,15 @@ completely replaced. The contents of the source item are undisturbed.
 
 ### Alphanumeric MOVEs
 Remember the following rule for alphanumeric MOVEs: when the destination item is alphanumeric or alphabetic (PIC X or A), data is copied into the destination area from left to right with space-filling or truncation on the right.
+
+### Numeric MOVEs
+Remember the following rule for numeric MOVEs: when the destination item is numeric or edited numeric, data is aligned along the decimal point with zero-filling or truncation as necessary. An edited numeric data item is one that contains symbols such as $ and , and . that format data for output. They are not numeric items, and they can’t be used in calculations (except as the receiving field), but they do obey the decimal-point alignment and zero-filling rules.
+
+```
+01 SalePrice PIC 9(4)V99        SalePrice
+MOVE ZEROS TO SalePrice          |0000.00|
+MOVE  25.5 TO SalePrice          |0025.50|
+MOVE 7.553 TO SalePrice          |0007.55|  3
+MOVE 93425.158 TO SalePrice    9 |3425.15|  8
+MOVE 128 TO SalePrice            |0128.00|
+```
