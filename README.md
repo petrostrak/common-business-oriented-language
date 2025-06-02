@@ -428,3 +428,18 @@ MOVE 7.553 TO SalePrice          |0007.55|  3
 MOVE 93425.158 TO SalePrice    9 |3425.15|  8
 MOVE 128 TO SalePrice            |0128.00|
 ```
+
+## Structured Data
+In COBOL, the term elementary item describes an ordinary data item or variable. An elementary item is a data item that is atomic: it has not been further subdivided. Every elementary item must have a PICTURE clause. The PICTURE clause specifies the type and size of the storage required for the data item.
+
+### Group Data Items
+A group item in COBOL is a data item that is a collection of elementary and/or group data items. It is a heterogeneous data structure. The constituent parts of a group item may be elementary items or other group items. But ultimately, every group item must be defined in terms of its subordinate elementary items. Because a group item is ultimately defined in terms of elementary items, it cannot have a PICTURE clause, and its size is the sum of the sizes of its subordinate elementary items. A group item is simply a convenient name that you give to a collection of (ultimately) elementary items. Using that name, you can manipulate the collection. In a group item, the hierarchical relationship between the various subordinate items of the group is expressed using level numbers. The higher the level number, the lower the item is in the hierarchy and the more atomic it is. If a group item is the highest item in a data hierarchy, it is referred to as a record and uses the level number 01. The type of a group item is always assumed to be alphanumeric.
+
+### Level Numbers
+Level numbers 01 through 49 are the general level numbers used to express data hierarchy. There are also special level numbers such as 66, 77, and 88:
+*   66 is used with the RENAMES clause. The RENAMES clause allows you to apply a new name to a data-name or group of contiguous data-names. It is similar to the REDEFINES clause.
+*   77 is used to identify a noncontiguous, single data item in the WORKING-STORAGE or LINKAGE sections; it cannot be subdivided, and it cannot be part of a group item.
+*   88 is used to implement condition names. Whereas level 66 and level 77 are not used in modern COBOL, level 88s and condition names are very important, useful, and unique weapons in COBOL’s armory.
+
+### Data Hierarchy
+Level numbers are used to express data hierarchy.
