@@ -443,3 +443,24 @@ Level numbers 01 through 49 are the general level numbers used to express data h
 
 ### Data Hierarchy
 Level numbers are used to express data hierarchy.
+
+## Input and Output with ACCEPT and DISPLAY
+In COBOL, the ACCEPT and DISPLAY verbs are used to read from the keyboard and write to the screen.
+
+### The DISPLAY Verb
+The DISPLAY verb is used to send output to the computer screen or to a peripheral device. A single DISPLAY can be used to display several data items or literals or any combination of these. The concatenation required by some other languages is not required for the DISPLAY verb.
+
+The default display device is the computer screen, but you can use other devices for output by specifying a mnemonic-name with the UPON clause like so `DISPLAY PrinterSetupCodes UPON PrinterPort1`.
+
+### The ACCEPT Verb
+There are two formats for the ACCEPT verb:
+*   The first gets data from the keyboard or a peripheral device.
+*   The second lets you access the system date and time (that is, the date and time held in the
+computer’s internal clock) by using certain system variables.
+
+When you use the first format, ACCEPT inserts the data typed on the keyboard into the receiving data item. If the FROM option is used, the data inserted into the receiving data item comes from the device indicated by the mnemonic-name.
+
+The default input device is the computer keyboard, but you can use other devices by specifying a mnemonic-name with the FROM clause. The mnemonic-name is connected to the actual device by an entry in the SPECIAL-NAMES paragraph, CONFIGURATION SECTION, ENVIRONMENT DIVISION.
+
+When you use the second format, ACCEPT moves the data from one of the system variables (DATE, DAY, DAY-OF-WEEK, TIME) into the receiving data item. Two of the system variables also have optional syntactic elements that allow you to specify that the date be supplied with a four-digit year.
+
