@@ -578,3 +578,17 @@ The SUBTRACT verb is a specialized verb used for subtraction. It can be more con
 > SUBTRACT Num1, Num2 FROM Num3 GIVING Result.
 > SUBTRACT Num1, Num2 FROM NumResult1, NumResult2.
 > In the first example, all the items before the word FROM are added together, the combined result is subtracted from num3, and the result is placed in the Result data item. In the second example, all the items before the word FROM are added together. The combined result is subtracted from NumResult1, and the result is placed in NumResult1. The combined result is also subtracted from NumResult2, and the result ofthat calculation is placed in NumResult2.
+
+## The MULTIPLY Verb
+The MULTIPLY verb is one of the arithmetic verbs that fully conforms to the common template.
+
+![multiply](https://github.com/petrostrak/common-business-oriented-language/blob/main/multiply.png)
+
+#### MULTIPLY Example
+```
+01 Fees       PIC 9(3)V99 VALUE 052.24
+01 Members    PIC 9(4)    VALUE 1024.
+01 TotalFees  PIC 9(5)V99 VALUE ZEROS.
+MULTIPLY Fees BY Members GIVING TotalFees.
+    DISPLAY "Alert: result to large for TotalFees"
+```
