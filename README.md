@@ -542,7 +542,7 @@ If FinalResult is too small to hold the result of all these multiplications, the
 ## The COMPUTE Verb
 COMPUTE assigns the result of an arithmetic expression to a data item. The arithmetic expression to the right of the equal sign is evaluated, and the result is assigned to the data item(s) on the left of the equal sign.
 
-![arithmetics](https://github.com/petrostrak/common-business-oriented-language/blob/main/compute.png)
+![compute](https://github.com/petrostrak/common-business-oriented-language/blob/main/compute.png)
 
 #### COMPUTE Examples
 ```
@@ -556,3 +556,14 @@ Before: 3333, After: 0094
 COMPUTE Euro ROUNDED = Dollar / ExchangeRate
 Before: 3425.15, After: 0948.57
 ```
+
+## The ADD Verb
+The ADD verb is used for addition. You might think COMPUTE could be used for that, and of course it can, but sometimes it can be simpler to use ADD. For instance, to increment a counter, you need COMPUTE ItemCount = ItemCount + 1, whereas you could just use ADD 1 TO ItemCount.
+
+![add](https://github.com/petrostrak/common-business-oriented-language/blob/main/add.png)
+
+> [!NOTE]
+> The ADD verb mostly conforms to the common template, but note the ellipsis after the first operand. This means you could have a statement
+> like ADD Num1, Num2, Num3 TO Num4 GIVING Result. What are the semantics of this version of ADD? The items before TO are all added together,
+> and then the result is applied to the operand or operands after TO. Note also that in the GIVING version of the ADD verb, the word TO is 
+> optional (square brackets). This means you could have a statement like ADD Num1, Num2, Num3 GIVING Result.
