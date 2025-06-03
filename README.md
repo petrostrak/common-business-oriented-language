@@ -528,3 +528,13 @@ MULTIPLY Members BY Subs GIVING TotalSubs
 >
 >    MULTIPLY 10 INTO Uninitialized. *> Uninitialized becomes 0 (10 * 0)
 >   ```
+
+### The ON SIZE ERROR
+A size error occurs when the computed result is too large or too small to fit into the receiving field. When the ON SIZE ERROR phrase is used, it is followed by a block of COBOL statements that usually alert you that an error condition has occurred.
+```
+COMPUTE FinalResult = Num1 * Num2 * Num3 * Num4
+    ON SIZE ERROR DISPLAY "Alert: FinalResult too small to hold result"
+END-COMPUTE
+```
+
+If FinalResult is too small to hold the result of all these multiplications, the ON SIZE ERROR activates and the alert message is displayed.
