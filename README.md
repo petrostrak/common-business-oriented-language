@@ -464,3 +464,67 @@ The default input device is the computer keyboard, but you can use other devices
 
 When you use the second format, ACCEPT moves the data from one of the system variables (DATE, DAY, DAY-OF-WEEK, TIME) into the receiving data item. Two of the system variables also have optional syntactic elements that allow you to specify that the date be supplied with a four-digit year.
 
+## Arithmetic in COBOL
+In COBOL, the COMPUTE verb is used to evaluate arithmetic expressions, but there are also specific commands for adding (ADD), subtracting (SUBTRACT), multiplying (MULTIPLY), and dividing (DIVIDE).
+
+With the exception of COMPUTE, DIVIDE with REMAINDER, and some exotic formats of ADD and SUBTRACT, most COBOL arithmetic verbs conform to the template metalanguage shown below
+
+![arithmetics](https://github.com/petrostrak/common-business-oriented-language/blob/main/arithmetics.png)
+
+> [!NOTE]
+> All the arithmetic verbs move the result of a calculation into a receiving data item according to the rules for a numeric move: that is, with alignment along the assumed decimal point and with zero-filling or truncation as necessary. In all the arithmetic verbs except COMPUTE, the result of the calculation is assigned to the rightmost data item(s). 
+
+> [!NOTE]
+> All arithmetic verbs must use numeric literals or numeric data items (PIC 9) that contain numeric data. There is one exception: data items that receive the result of the calculation but are not themselves one of the operands (do not contribute to the result) may be numeric or edited numeric.
+
+> [!NOTE]
+> Where the GIVING phrase is used, the item to the right of the word giving receives the result of the calculation but does not contribute to it. Where there is more than one item after the word giving, each receives the result of the calculation.
+
+> [!NOTE]
+> Where the GIVING phrase is not used and there is more than one OperandResult#i, Operand#il is applied to each OperandResult#i in turn, and the result of each calculation is placed in each OperandResult#i.
+The maximum size of each operand is 18 digits (31 in ISO 2002 COBOL).
+
+#### Examples of COBOL Arithmetic Statements
+```
+ADD Takings TO CashTotal
+* Adds the value in Takings to the value in CashTotal and puts the result in CashTotal
+
+ADD Males TO Females GIVING TotalStudents
+* Adds the value in Males to the value in Females and overwrites the value in TotalStudents with the result
+
+ADD Sales TO ShopSales, CountySales, CountrySales
+* Adds the value of Sales to ShopSales and puts the result in ShopSales.
+* Adds the value of Sales to CountySales and puts the result in CountySales
+* Adds the value of Sales to CountrySales and puts the result in CountrySales
+
+SUBTRACT Tax FROM GrossPay
+* Subtracts the value in Tax from the value in GrossPay and puts the result in GrossPay
+
+SUBTRACT Tax FROM GrossPay GIVING NetPay
+* Subtracts the value in Tax from the value in GrossPay and puts the result in NetPay
+
+DIVIDE Total BY Members GIVING MemberAverage ROUNDED
+* Divides the value in Total by the value in Members and puts the rounded result in MemberAverage
+
+DIVIDE Members INTO Total GIVING MemberAverage
+* Divides the value in Members into the value in Total and puts the result in MemberAverage
+
+MULTIPLY 10 BY Magnitude
+* Multiplies 10 by the value in Magnitude and puts the result in Magnitude
+
+MULTIPLY Members BY Subs GIVING TotalSubs
+* Multiplies the value of Members by the value of Subs and puts the result in TotalSubs
+```
+
+> [!NOTE]
+> * BY form requires the target variable to be initialized 
+> * INTO form doesn't require initialization (will treat as zero if uninitialized)
+>   ```
+>    MOVE 5 TO Magnitude.
+>    MULTIPLY 10 BY Magnitude.    *> Magnitude becomes 50 (5 * 10)
+>
+>    MOVE 5 TO Magnitude.
+>    MULTIPLY 10 INTO Magnitude. *> Magnitude becomes 50 (10 * 5)
+>
+>    MULTIPLY 10 INTO Uninitialized. *> Uninitialized becomes 0 (10 * 0)
+>   ```
