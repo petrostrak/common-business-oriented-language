@@ -567,3 +567,14 @@ The ADD verb is used for addition. You might think COMPUTE could be used for tha
 > like ADD Num1, Num2, Num3 TO Num4 GIVING Result. What are the semantics of this version of ADD? The items before TO are all added together,
 > and then the result is applied to the operand or operands after TO. Note also that in the GIVING version of the ADD verb, the word TO is 
 > optional (square brackets). This means you could have a statement like ADD Num1, Num2, Num3 GIVING Result.
+
+## The SUBTRACT Verb
+The SUBTRACT verb is a specialized verb used for subtraction. It can be more convenient to use SUBTRACT to decrement acounterratherthanCOMPUTE.Forinstance,todecrementacounteryouneedCOMPUTE ItemCount = ItemCount – 1, whereas you could just use SUBTRACT 1 FROM ItemCount.
+
+![subtract](https://github.com/petrostrak/common-business-oriented-language/blob/main/subtract.png)
+
+> [!NOTE]
+> The SUBTRACT verb mostly conforms to the common template, but just as with ADD, there is an ellipsis after the first operand. This means you could have statements like these:
+> SUBTRACT Num1, Num2 FROM Num3 GIVING Result.
+> SUBTRACT Num1, Num2 FROM NumResult1, NumResult2.
+> In the first example, all the items before the word FROM are added together, the combined result is subtracted from num3, and the result is placed in the Result data item. In the second example, all the items before the word FROM are added together. The combined result is subtracted from NumResult1, and the result is placed in NumResult1. The combined result is also subtracted from NumResult2, and the result ofthat calculation is placed in NumResult2.
