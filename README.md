@@ -592,3 +592,27 @@ The MULTIPLY verb is one of the arithmetic verbs that fully conforms to the comm
 MULTIPLY Fees BY Members GIVING TotalFees.
     DISPLAY "Alert: result to large for TotalFees"
 ```
+
+## The DIVIDE Verb
+The DIVIDE verb has two main formats.
+![divide-1](https://github.com/petrostrak/common-business-oriented-language/blob/main/divide-1.png)
+![divide-2](https://github.com/petrostrak/common-business-oriented-language/blob/main/divide-2.png)
+
+#### DIVIDE Examples
+```
+01 Amount1 PIC 9(4) VALUE 2444.
+01 Amount2 PIC 9(3) VALUE 354.
+DIVIDE 15 INTO Amount1, Amount2.
+Amount1: 162, Amount2: 023
+
+01 Qty PIC 9(5) VALUE 31255.
+01 Units PIC 9(3) VALUE 115.
+01 Average PIC 9(4) VALUE ZEROS.
+DIVIDE Qty BY Units GIVING Average ROUNDED.
+Average: 0272
+
+01 Quotient PIC 999  VALUE ZEROS.
+01 Rem PIC 9 VALUE ZEROS.
+DIVIDE 215 BY 10 GIVING Quotient REMAINDER Rem.
+Quotient: 21, Rem: 5
+```
