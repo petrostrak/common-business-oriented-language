@@ -93,3 +93,6 @@ Condition names are always associated with a particular data item and are define
 When the VALUE clause is used with condition names, it does not assign a value. Instead, it identifies the value(s) which, if found in the associated data item, make the condition name true.
 
 When identifying the condition values, a single value, a list of values, a range of values, or any combination of these may be specified. To specify a list of values, the entries are listed after the keyword VALUE. The list entries may be separated by commas or spaces but must terminate with a period.
+
+#### Overlapping and Multiple-Value Condition Names
+When multiple condition names are associated with a single data item, more than one condition name can be true at the same time.
