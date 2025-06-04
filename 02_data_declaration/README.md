@@ -149,7 +149,7 @@ completely replaced. The contents of the source item are undisturbed.
 *   When the destination item is numeric or edited numeric, data is aligned along the decimal point with zero-filling or truncation as necessary.
 *   When the decimal point is not explicitly specified in either the source or destination item(s), the item is treated as if it had an assumed decimal point immediately after its rightmost character.
 
-![move-rules](https://github.com/petrostrak/common-business-oriented-language/blob/main/move-rules.png)
+![move-rules](https://github.com/petrostrak/common-business-oriented-language/blob/main/assets/move-rules.png)
 
 *Valid and invalid MOVE combinations*
 

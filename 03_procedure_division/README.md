@@ -24,7 +24,7 @@ In COBOL, the COMPUTE verb is used to evaluate arithmetic expressions, but there
 
 With the exception of COMPUTE, DIVIDE with REMAINDER, and some exotic formats of ADD and SUBTRACT, most COBOL arithmetic verbs conform to the template metalanguage shown below
 
-![arithmetics](https://github.com/petrostrak/common-business-oriented-language/blob/main/arithmetics.png)
+![arithmetics](https://github.com/petrostrak/common-business-oriented-language/blob/main/assets/arithmetics.png)
 
 > [!NOTE]
 > All the arithmetic verbs move the result of a calculation into a receiving data item according to the rules for a numeric move: that is, with alignment along the assumed decimal point and with zero-filling or truncation as necessary. In all the arithmetic verbs except COMPUTE, the result of the calculation is assigned to the rightmost data item(s). 
@@ -97,7 +97,7 @@ If FinalResult is too small to hold the result of all these multiplications, the
 ## The COMPUTE Verb
 COMPUTE assigns the result of an arithmetic expression to a data item. The arithmetic expression to the right of the equal sign is evaluated, and the result is assigned to the data item(s) on the left of the equal sign.
 
-![compute](https://github.com/petrostrak/common-business-oriented-language/blob/main/compute.png)
+![compute](https://github.com/petrostrak/common-business-oriented-language/blob/main/assets/compute.png)
 
 #### COMPUTE Examples
 ```
@@ -115,7 +115,7 @@ Before: 3425.15, After: 0948.57
 ## The ADD Verb
 The ADD verb is used for addition. You might think COMPUTE could be used for that, and of course it can, but sometimes it can be simpler to use ADD. For instance, to increment a counter, you need COMPUTE ItemCount = ItemCount + 1, whereas you could just use ADD 1 TO ItemCount.
 
-![add](https://github.com/petrostrak/common-business-oriented-language/blob/main/add.png)
+![add](https://github.com/petrostrak/common-business-oriented-language/blob/main/assets/add.png)
 
 > [!NOTE]
 > The ADD verb mostly conforms to the common template, but note the ellipsis after the first operand. This means you could have a statement
@@ -126,7 +126,7 @@ The ADD verb is used for addition. You might think COMPUTE could be used for tha
 ## The SUBTRACT Verb
 The SUBTRACT verb is a specialized verb used for subtraction. It can be more convenient to use SUBTRACT to decrement acounterratherthanCOMPUTE.Forinstance,todecrementacounteryouneedCOMPUTE ItemCount = ItemCount – 1, whereas you could just use SUBTRACT 1 FROM ItemCount.
 
-![subtract](https://github.com/petrostrak/common-business-oriented-language/blob/main/subtract.png)
+![subtract](https://github.com/petrostrak/common-business-oriented-language/blob/main/assets/subtract.png)
 
 > [!NOTE]
 > The SUBTRACT verb mostly conforms to the common template, but just as with ADD, there is an ellipsis after the first operand. This means you could have statements like these:
@@ -137,7 +137,7 @@ The SUBTRACT verb is a specialized verb used for subtraction. It can be more con
 ## The MULTIPLY Verb
 The MULTIPLY verb is one of the arithmetic verbs that fully conforms to the common template.
 
-![multiply](https://github.com/petrostrak/common-business-oriented-language/blob/main/multiply.png)
+![multiply](https://github.com/petrostrak/common-business-oriented-language/blob/main/assets/multiply.png)
 
 #### MULTIPLY Example
 ```
@@ -150,8 +150,8 @@ MULTIPLY Fees BY Members GIVING TotalFees.
 
 ## The DIVIDE Verb
 The DIVIDE verb has two main formats.
-![divide-1](https://github.com/petrostrak/common-business-oriented-language/blob/main/divide-1.png)
-![divide-2](https://github.com/petrostrak/common-business-oriented-language/blob/main/divide-2.png)
+![divide-1](https://github.com/petrostrak/common-business-oriented-language/blob/main/assets/divide-1.png)
+![divide-2](https://github.com/petrostrak/common-business-oriented-language/blob/main/assets/divide-2.png)
 
 #### DIVIDE Examples
 ```
