@@ -96,3 +96,5 @@ When identifying the condition values, a single value, a list of values, a range
 
 #### Overlapping and Multiple-Value Condition Names
 When multiple condition names are associated with a single data item, more than one condition name can be true at the same time.
+
+The list of values that follows a condition name may be a single value, a number of values, or a range of values, or any mixture of these. When a range is specified, the word THROUGH or THRU is used to separate the minimum and maximum values in the range. 
